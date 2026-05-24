@@ -1,0 +1,40 @@
+{
+    "mode": "inference",
+    "training_metrics": {
+        "final_reconstruction_loss": 0.04603073545373403,
+        "best_validation_loss": 0.041144243840660365,
+        "mean_reconstruction_error": 0.20675996648193515,
+        "max_reconstruction_error": 0.21124547485968934,
+        "anomaly_threshold": 0.21036146195884228,
+        "anomaly_percentile_used": 98,
+        "window_size": 30,
+        "batch_size": 50,
+        "features_used": [
+            "sales",
+            "onpromotion",
+            "transactions",
+            "dcoilwtico",
+            "day_of_week",
+            "is_weekend",
+            "sales_lag_1",
+            "sales_lag_7",
+            "sales_diff",
+            "sales_pct_change",
+            "rolling_mean_7",
+            "rolling_std_7",
+            "z_score"
+        ],
+        "model_path": "outputs/best_anomaly_lstm_autoencoder.pt"
+    },
+    "total_records_analyzed": 336,
+    "total_anomalies_detected": 17,
+    "anomaly_rate": 0.050595238095238096,
+    "risk_distribution": {
+        "Low Risk": 17
+    },
+    "anomaly_type_distribution": {
+        "Inconsistent Demand Pattern": 17
+    },
+    "highest_risk_dates": [],
+    "business_interpretation": "The LSTM Autoencoder learns normal temporal retail behavior. Anomalies are detected using reconstruction error and business rules."
+}

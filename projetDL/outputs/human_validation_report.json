@@ -1,0 +1,28 @@
+{
+    "validation_results": [
+        {
+            "category": "Anomaly Monitoring",
+            "priority": "Medium",
+            "recommendation": "Investigate abnormal sales and promotion behavior before making final stock decisions.",
+            "approval_status": "Approved"
+        },
+        {
+            "category": "Operational Risk",
+            "priority": "Medium",
+            "recommendation": "Review the main anomaly categories to identify operational inconsistencies.",
+            "approval_status": "Approved"
+        },
+        {
+            "category": "Business Control",
+            "priority": "High",
+            "recommendation": "Validate suspicious periods before taking inventory or promotion decisions.",
+            "approval_status": "Approved"
+        }
+    ],
+    "validation_summary": {
+        "total_recommendations": 3,
+        "approved_recommendations": 3,
+        "rejected_recommendations": 0,
+        "final_status": "Validated"
+    }
+}

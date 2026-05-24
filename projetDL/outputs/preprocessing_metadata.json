@@ -1,0 +1,9 @@
+{
+    "date_col": "date",
+    "target_col": "sales",
+    "original_date_col": "date",
+    "original_target_col": "price",
+    "frequency": "D",
+    "main_file": "retail_store_sales_promotions_demand (1).csv",
+    "model_ready_type": "daily_aggregated_time_series"
+}

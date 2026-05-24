@@ -1,0 +1,278 @@
+{
+    "mode": "anomaly",
+    "execution_mode": "inference",
+    "forecasting_summary": null,
+    "anomaly_summary": {
+        "mode": "inference",
+        "training_metrics": {
+            "final_reconstruction_loss": 0.04603073545373403,
+            "best_validation_loss": 0.041144243840660365,
+            "mean_reconstruction_error": 0.20675996648193515,
+            "max_reconstruction_error": 0.21124547485968934,
+            "anomaly_threshold": 0.21036146195884228,
+            "anomaly_percentile_used": 98,
+            "window_size": 30,
+            "batch_size": 50,
+            "features_used": [
+                "sales",
+                "onpromotion",
+                "transactions",
+                "dcoilwtico",
+                "day_of_week",
+                "is_weekend",
+                "sales_lag_1",
+                "sales_lag_7",
+                "sales_diff",
+                "sales_pct_change",
+                "rolling_mean_7",
+                "rolling_std_7",
+                "z_score"
+            ],
+            "model_path": "outputs/best_anomaly_lstm_autoencoder.pt"
+        },
+        "total_records_analyzed": 336,
+        "total_anomalies_detected": 17,
+        "anomaly_rate": 0.050595238095238096,
+        "risk_distribution": {
+            "Low Risk": 17
+        },
+        "anomaly_type_distribution": {
+            "Inconsistent Demand Pattern": 17
+        },
+        "highest_risk_dates": [],
+        "business_interpretation": "The LSTM Autoencoder learns normal temporal retail behavior. Anomalies are detected using reconstruction error and business rules."
+    },
+    "recommendation_output": {
+        "mode": "anomaly",
+        "recommendations": [
+            {
+                "category": "Anomaly Monitoring",
+                "priority": "Medium",
+                "recommendation": "Investigate abnormal sales and promotion behavior before making final stock decisions.",
+                "reason": "17 anomalies were detected with risk distribution: {'Low Risk': 17}."
+            },
+            {
+                "category": "Operational Risk",
+                "priority": "Medium",
+                "recommendation": "Review the main anomaly categories to identify operational inconsistencies.",
+                "reason": "Detected anomaly types: {'Inconsistent Demand Pattern': 17}."
+            },
+            {
+                "category": "Business Control",
+                "priority": "High",
+                "recommendation": "Validate suspicious periods before taking inventory or promotion decisions.",
+                "reason": "Human review is required because abnormal behavior may indicate stock or promotion issues."
+            }
+        ],
+        "crewai_business_insight": "SUMMARY:\n- The anomaly detection model identified 17 anomalies out of 336 analyzed records.\n\nKEY FINDINGS:\n- The anomaly rate is 5.06%.\n- The main anomaly type is Inconsistent Demand Pattern.\n- Risk distribution: {'Low Risk': 17}.\n\nMAIN RISK:\n- Abnormal sales or promotion behavior may lead to wrong inventory, promotion, or operational decisions.\n\nRECOMMENDED ACTIONS:\n- Investigate abnormal sales and promotion behavior before making final stock decisions.\n- Review the main anomaly categories to identify operational inconsistencies.\n- Validate suspicious periods before taking inventory or promotion decisions.\n",
+        "ollama_business_insight": "SUMMARY:\n- The anomaly detection model identified 17 anomalies out of 336 analyzed records.\n\nKEY FINDINGS:\n- The anomaly rate is 5.06%.\n- The main anomaly type is Inconsistent Demand Pattern.\n- Risk distribution: {'Low Risk': 17}.\n\nMAIN RISK:\n- Abnormal sales or promotion behavior may lead to wrong inventory, promotion, or operational decisions.\n\nRECOMMENDED ACTIONS:\n- Investigate abnormal sales and promotion behavior before making final stock decisions.\n- Review the main anomaly categories to identify operational inconsistencies.\n- Validate suspicious periods before taking inventory or promotion decisions.\n",
+        "action_plan": {
+            "risk_strategy": "Review detected anomalies before approving operational decisions.",
+            "control_strategy": "Investigate suspicious periods and abnormal demand patterns.",
+            "decision_strategy": "Send anomaly recommendations to Human-in-the-Loop Agent for validation."
+        },
+        "logs": [
+            {
+                "timestamp": "2026-05-24T12:12:03.155239",
+                "agent": "RecommendationAgent",
+                "action": "crewai_business_insight",
+                "status": "success",
+                "details": "CrewAI generated business insight using Ollama."
+            },
+            {
+                "timestamp": "2026-05-24T12:12:03.158064",
+                "agent": "RecommendationAgent",
+                "action": "run",
+                "status": "success",
+                "details": "Recommendations generated for mode: anomaly"
+            }
+        ]
+    },
+    "human_validation_output": {
+        "validation_results": [
+            {
+                "category": "Demand Forecasting",
+                "priority": "Low",
+                "recommendation": "Maintain current stock planning strategy.",
+                "approval_status": "Approved"
+            },
+            {
+                "category": "Peak Demand",
+                "priority": "High",
+                "recommendation": "Prepare additional inventory before detected peak demand dates.",
+                "approval_status": "Rejected"
+            },
+            {
+                "category": "Inventory Management",
+                "priority": "High",
+                "recommendation": "Prepare inventory based on forecasted demand with a 15% safety margin.",
+                "approval_status": "Approved"
+            }
+        ],
+        "validation_summary": {
+            "total_recommendations": 3,
+            "approved_recommendations": 2,
+            "rejected_recommendations": 1,
+            "needs_review": 0,
+            "human_validation_required": true,
+            "final_status": "Partially Validated"
+        },
+        "logs": [
+            {
+                "timestamp": "2026-05-24T12:12:03.181643",
+                "agent": "HumanInLoopAgent",
+                "action": "load_manual_validation",
+                "status": "success",
+                "details": "Loaded 3 manually-reviewed decisions from outputs/human_validation_report.json"
+            },
+            {
+                "timestamp": "2026-05-24T12:12:03.181643",
+                "agent": "HumanInLoopAgent",
+                "action": "run",
+                "status": "success",
+                "details": "Used manual human validation from UI."
+            }
+        ]
+    },
+    "final_report": {
+        "report_title": "AI-Powered Retail Business Intelligence Report",
+        "analysis_mode": "anomaly",
+        "generation_date": "2026-05-24T12:12:03.186361",
+        "forecasting_results": null,
+        "anomaly_detection_results": {
+            "total_records_analyzed": 336,
+            "total_anomalies_detected": 17,
+            "anomaly_rate": 0.050595238095238096,
+            "risk_distribution": {
+                "Low Risk": 17
+            },
+            "anomaly_type_distribution": {
+                "Inconsistent Demand Pattern": 17
+            },
+            "highest_risk_dates": [],
+            "business_interpretation": "The LSTM Autoencoder learns normal temporal retail behavior. Anomalies are detected using reconstruction error and business rules."
+        },
+        "business_recommendations": [
+            {
+                "category": "Anomaly Monitoring",
+                "priority": "Medium",
+                "recommendation": "Investigate abnormal sales and promotion behavior before making final stock decisions.",
+                "reason": "17 anomalies were detected with risk distribution: {'Low Risk': 17}."
+            },
+            {
+                "category": "Operational Risk",
+                "priority": "Medium",
+                "recommendation": "Review the main anomaly categories to identify operational inconsistencies.",
+                "reason": "Detected anomaly types: {'Inconsistent Demand Pattern': 17}."
+            },
+            {
+                "category": "Business Control",
+                "priority": "High",
+                "recommendation": "Validate suspicious periods before taking inventory or promotion decisions.",
+                "reason": "Human review is required because abnormal behavior may indicate stock or promotion issues."
+            }
+        ],
+        "crewai_business_insight": "SUMMARY:\n- The anomaly detection model identified 17 anomalies out of 336 analyzed records.\n\nKEY FINDINGS:\n- The anomaly rate is 5.06%.\n- The main anomaly type is Inconsistent Demand Pattern.\n- Risk distribution: {'Low Risk': 17}.\n\nMAIN RISK:\n- Abnormal sales or promotion behavior may lead to wrong inventory, promotion, or operational decisions.\n\nRECOMMENDED ACTIONS:\n- Investigate abnormal sales and promotion behavior before making final stock decisions.\n- Review the main anomaly categories to identify operational inconsistencies.\n- Validate suspicious periods before taking inventory or promotion decisions.\n",
+        "human_validation": {
+            "total_recommendations": 3,
+            "approved_recommendations": 2,
+            "rejected_recommendations": 1,
+            "needs_review": 0,
+            "human_validation_required": true,
+            "final_status": "Partially Validated"
+        },
+        "final_business_conclusion": "The AI system analyzed retail data, generated business recommendations, and validated decisions through a human-in-the-loop checkpoint.",
+        "crewai_executive_summary": "EXECUTIVE SUMMARY:\n- The anomaly analysis detected abnormal retail behavior that requires business review.\n\nMODEL RESULT:\n- 17 anomalies were detected out of 336 records.\n- The anomaly rate is 5.06%.\n- The main anomaly type is Inconsistent Demand Pattern.\n\nBUSINESS RECOMMENDATIONS:\n- Investigate abnormal sales and promotion behavior before making final stock decisions.\n- Review the main anomaly categories to identify operational inconsistencies.\n- Validate suspicious periods before taking inventory or promotion decisions.\n\nHUMAN VALIDATION:\n- Human validation status: Partially Validated.\n\nFINAL DECISION:\n- Review detected anomalies before making inventory or promotion decisions.\n",
+        "logs": [
+            {
+                "timestamp": "2026-05-24T12:12:03.233355",
+                "agent": "ReportGenerationAgent",
+                "action": "crewai_report_summary",
+                "status": "success",
+                "details": "CrewAI generated executive summary."
+            },
+            {
+                "timestamp": "2026-05-24T12:12:03.240902",
+                "agent": "ReportGenerationAgent",
+                "action": "run",
+                "status": "success",
+                "details": {
+                    "json_report": "outputs\\final_business_report.json",
+                    "text_report": "outputs\\final_business_report.txt"
+                }
+            }
+        ]
+    },
+    "orchestrator_logs": [
+        {
+            "timestamp": "2026-05-24T12:12:01.844643",
+            "agent": "OrchestratorAgent",
+            "action": "start_preprocessing",
+            "status": "running",
+            "details": null
+        },
+        {
+            "timestamp": "2026-05-24T12:12:02.059825",
+            "agent": "PreprocessingAgent",
+            "action": "run",
+            "status": "success",
+            "details": null
+        },
+        {
+            "timestamp": "2026-05-24T12:12:02.060840",
+            "agent": "OrchestratorAgent",
+            "action": "start_anomaly_inference",
+            "status": "running",
+            "details": null
+        },
+        {
+            "timestamp": "2026-05-24T12:12:03.107639",
+            "agent": "DLAnomalyDetectionAgent",
+            "action": "inference",
+            "status": "success",
+            "details": null
+        },
+        {
+            "timestamp": "2026-05-24T12:12:03.107639",
+            "agent": "OrchestratorAgent",
+            "action": "start_recommendation",
+            "status": "running",
+            "details": null
+        },
+        {
+            "timestamp": "2026-05-24T12:12:03.159604",
+            "agent": "RecommendationAgent",
+            "action": "run",
+            "status": "success",
+            "details": null
+        },
+        {
+            "timestamp": "2026-05-24T12:12:03.159604",
+            "agent": "OrchestratorAgent",
+            "action": "start_human_validation",
+            "status": "running",
+            "details": null
+        },
+        {
+            "timestamp": "2026-05-24T12:12:03.185350",
+            "agent": "HumanInLoopAgent",
+            "action": "run",
+            "status": "success",
+            "details": null
+        },
+        {
+            "timestamp": "2026-05-24T12:12:03.185350",
+            "agent": "OrchestratorAgent",
+            "action": "start_report_generation",
+            "status": "running",
+            "details": null
+        },
+        {
+            "timestamp": "2026-05-24T12:12:03.240902",
+            "agent": "ReportGenerationAgent",
+            "action": "run",
+            "status": "success",
+            "details": null
+        }
+    ]
+}

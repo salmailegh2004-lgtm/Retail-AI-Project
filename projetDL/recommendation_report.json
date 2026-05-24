@@ -1,0 +1,57 @@
+{
+    "recommendations": [
+        {
+            "category": "Demand Forecasting",
+            "priority": "Low",
+            "recommendation": "Maintain current stock planning strategy.",
+            "reason": "The predicted demand is stable."
+        },
+        {
+            "category": "Peak Demand",
+            "priority": "High",
+            "recommendation": "Prepare additional inventory before detected peak demand dates.",
+            "reason": "Future peak periods detected on: ['2017-09-12', '2017-09-13', '2017-09-14']."
+        },
+        {
+            "category": "Inventory Management",
+            "priority": "High",
+            "recommendation": "Prepare inventory based on forecasted demand with a 15% safety margin.",
+            "reason": "The expected demand is approximately 21499020 units during the forecast period."
+        },
+        {
+            "category": "Anomaly Monitoring",
+            "priority": "High",
+            "recommendation": "Investigate abnormal sales and promotion behavior before making final stock decisions.",
+            "reason": "368 anomalies were detected with risk distribution: {'Low Risk': 366, 'Medium Risk': 2}."
+        },
+        {
+            "category": "Promotion Strategy",
+            "priority": "High",
+            "recommendation": "Use promotions carefully because they influence sales demand.",
+            "reason": "Promotion-sales correlation is 0.57."
+        }
+    ],
+    "ollama_business_insight": "**Global Interpretation:**\n\nThe retail business analysis reveals a stable demand trend with moderate anomalies in sales patterns, primarily driven by promotional behavior. However, the model also detects potential peaks in demand and suggests preparing additional inventory accordingly.\n\n**Main Business Risk:**\n\nThe main business risk lies in the uncertainty of future sales patterns, particularly during peak periods. The predicted demand is stable, but the detection of 3 future peak periods with high-risk anomalies highlights the need for proactive measures to ensure sufficient inventory levels.\n\n**Most Important Action to Take:**\n\nInvestigate abnormal sales and promotion behavior (anomalies) before making final stock decisions. This will help mitigate potential risks and optimize inventory planning, ensuring that sufficient stock is available to meet demand while minimizing overstocking and associated costs.",
+    "action_plan": {
+        "stock_strategy": "Adjust stock based on forecasted demand and detected peak periods.",
+        "risk_strategy": "Review medium-risk anomalies before approving operational decisions.",
+        "promotion_strategy": "Use promotion impact analysis to prepare inventory before campaigns.",
+        "decision_strategy": "Send recommendations to Human-in-the-Loop Agent for validation."
+    },
+    "logs": [
+        {
+            "timestamp": "2026-05-23T18:19:38.745366",
+            "agent": "RecommendationAgent",
+            "action": "ollama_business_insight",
+            "status": "success",
+            "details": "Ollama generated business insight."
+        },
+        {
+            "timestamp": "2026-05-23T18:19:38.745366",
+            "agent": "RecommendationAgent",
+            "action": "run",
+            "status": "success",
+            "details": "Recommendations generated using rule-based logic and Ollama insight."
+        }
+    ]
+}

@@ -1,0 +1,27 @@
+{
+    "feature_cols": [
+        "sales",
+        "onpromotion",
+        "transactions",
+        "dcoilwtico",
+        "day_of_week",
+        "is_weekend",
+        "sales_lag_1",
+        "sales_lag_7",
+        "sales_diff",
+        "sales_pct_change",
+        "rolling_mean_7",
+        "rolling_std_7",
+        "z_score"
+    ],
+    "window_size": 30,
+    "input_size": 13,
+    "anomaly_threshold": 0.05616059097831571,
+    "anomaly_percentile": 90,
+    "z_threshold": 2.8,
+    "promotion_threshold": 0.2,
+    "dropout_rate": 0.2,
+    "model_path": "outputs/best_anomaly_lstm_autoencoder.pt",
+    "final_reconstruction_loss": 0.04603073545373403,
+    "best_validation_loss": 0.041144243840660365
+}

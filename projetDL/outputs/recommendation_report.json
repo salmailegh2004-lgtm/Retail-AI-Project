@@ -1,0 +1,46 @@
+{
+    "mode": "anomaly",
+    "recommendations": [
+        {
+            "category": "Anomaly Monitoring",
+            "priority": "Medium",
+            "recommendation": "Investigate abnormal sales and promotion behavior before making final stock decisions.",
+            "reason": "17 anomalies were detected with risk distribution: {'Low Risk': 17}."
+        },
+        {
+            "category": "Operational Risk",
+            "priority": "Medium",
+            "recommendation": "Review the main anomaly categories to identify operational inconsistencies.",
+            "reason": "Detected anomaly types: {'Inconsistent Demand Pattern': 17}."
+        },
+        {
+            "category": "Business Control",
+            "priority": "High",
+            "recommendation": "Validate suspicious periods before taking inventory or promotion decisions.",
+            "reason": "Human review is required because abnormal behavior may indicate stock or promotion issues."
+        }
+    ],
+    "crewai_business_insight": "SUMMARY:\n- The anomaly detection model identified 17 anomalies out of 336 analyzed records.\n\nKEY FINDINGS:\n- The anomaly rate is 5.06%.\n- The main anomaly type is Inconsistent Demand Pattern.\n- Risk distribution: {'Low Risk': 17}.\n\nMAIN RISK:\n- Abnormal sales or promotion behavior may lead to wrong inventory, promotion, or operational decisions.\n\nRECOMMENDED ACTIONS:\n- Investigate abnormal sales and promotion behavior before making final stock decisions.\n- Review the main anomaly categories to identify operational inconsistencies.\n- Validate suspicious periods before taking inventory or promotion decisions.\n",
+    "ollama_business_insight": "SUMMARY:\n- The anomaly detection model identified 17 anomalies out of 336 analyzed records.\n\nKEY FINDINGS:\n- The anomaly rate is 5.06%.\n- The main anomaly type is Inconsistent Demand Pattern.\n- Risk distribution: {'Low Risk': 17}.\n\nMAIN RISK:\n- Abnormal sales or promotion behavior may lead to wrong inventory, promotion, or operational decisions.\n\nRECOMMENDED ACTIONS:\n- Investigate abnormal sales and promotion behavior before making final stock decisions.\n- Review the main anomaly categories to identify operational inconsistencies.\n- Validate suspicious periods before taking inventory or promotion decisions.\n",
+    "action_plan": {
+        "risk_strategy": "Review detected anomalies before approving operational decisions.",
+        "control_strategy": "Investigate suspicious periods and abnormal demand patterns.",
+        "decision_strategy": "Send anomaly recommendations to Human-in-the-Loop Agent for validation."
+    },
+    "logs": [
+        {
+            "timestamp": "2026-05-24T12:12:03.155239",
+            "agent": "RecommendationAgent",
+            "action": "crewai_business_insight",
+            "status": "success",
+            "details": "CrewAI generated business insight using Ollama."
+        },
+        {
+            "timestamp": "2026-05-24T12:12:03.158064",
+            "agent": "RecommendationAgent",
+            "action": "run",
+            "status": "success",
+            "details": "Recommendations generated for mode: anomaly"
+        }
+    ]
+}

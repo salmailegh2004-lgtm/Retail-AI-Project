@@ -1,0 +1,30 @@
+{
+    "mode": "inference",
+    "metrics": {
+        "MAE": 74223.63918008193,
+        "RMSE": 121430.67067408793,
+        "R2": 0.5633603724046612,
+        "SMAPE": 8.63284520779777,
+        "Peak_Threshold": 964690.873686,
+        "Threshold_Method": "hybrid max(percentile_90, mean + std)"
+    },
+    "trend_analysis": {
+        "first_predicted_sales": 496555.625,
+        "last_predicted_sales": 515488.75,
+        "change": 18933.125,
+        "change_percentage": 3.8128907680511475,
+        "trend": "Stable demand"
+    },
+    "promotion_impact": {
+        "available": true,
+        "correlation_onpromotion_sales": null
+    },
+    "inventory_requirements": {
+        "safety_margin": 0.15,
+        "total_predicted_demand": 15391998.0,
+        "total_recommended_inventory": 17700796.0
+    },
+    "number_of_detected_future_peaks": 3,
+    "model_type": "Loaded LSTM Forecasting Model",
+    "model_loaded_path": "outputs/best_forecasting_lstm.pt"
+}

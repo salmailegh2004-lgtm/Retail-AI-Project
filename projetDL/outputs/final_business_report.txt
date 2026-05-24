@@ -1,0 +1,97 @@
+AI-Powered Retail Business Intelligence Report
+======================================================================
+
+Analysis Mode: anomaly
+Generation Date: 2026-05-24T12:12:39.346015
+
+1. Anomaly Detection Results
+--------------------------------------------------
+Total records analyzed: 336
+Total anomalies detected: 17
+Anomaly rate: 5.06%
+
+Risk Distribution:
+- Low Risk: 17
+
+Anomaly Type Distribution:
+- Inconsistent Demand Pattern: 17
+
+Highest Risk Dates:
+- Not available
+
+Business Interpretation:
+The LSTM Autoencoder learns normal temporal retail behavior. Anomalies are detected using reconstruction error and business rules.
+
+Model Execution Evidence:
+- Loaded model: outputs/best_anomaly_lstm_autoencoder.pt
+- Execution mode: inference using saved trained model
+- Input dataset was automatically preprocessed
+- Anomalies were detected using reconstruction error analysis
+- The LSTM Autoencoder evaluated temporal retail behavior patterns
+
+2. Business Recommendations
+--------------------------------------------------
+[Medium] Anomaly Monitoring
+Recommendation: Investigate abnormal sales and promotion behavior before making final stock decisions.
+Reason: 17 anomalies were detected with risk distribution: {'Low Risk': 17}.
+
+[Medium] Operational Risk
+Recommendation: Review the main anomaly categories to identify operational inconsistencies.
+Reason: Detected anomaly types: {'Inconsistent Demand Pattern': 17}.
+
+[High] Business Control
+Recommendation: Validate suspicious periods before taking inventory or promotion decisions.
+Reason: Human review is required because abnormal behavior may indicate stock or promotion issues.
+
+3. CrewAI Business Insight
+--------------------------------------------------
+SUMMARY:
+- The anomaly detection model identified 17 anomalies out of 336 analyzed records.
+
+KEY FINDINGS:
+- The anomaly rate is 5.06%.
+- The main anomaly type is Inconsistent Demand Pattern.
+- Risk distribution: {'Low Risk': 17}.
+
+MAIN RISK:
+- Abnormal sales or promotion behavior may lead to wrong inventory, promotion, or operational decisions.
+
+RECOMMENDED ACTIONS:
+- Investigate abnormal sales and promotion behavior before making final stock decisions.
+- Review the main anomaly categories to identify operational inconsistencies.
+- Validate suspicious periods before taking inventory or promotion decisions.
+
+
+4. CrewAI Executive Summary
+--------------------------------------------------
+EXECUTIVE SUMMARY:
+- The anomaly analysis detected abnormal retail behavior that requires business review.
+
+MODEL RESULT:
+- 17 anomalies were detected out of 336 records.
+- The anomaly rate is 5.06%.
+- The main anomaly type is Inconsistent Demand Pattern.
+
+BUSINESS RECOMMENDATIONS:
+- Investigate abnormal sales and promotion behavior before making final stock decisions.
+- Review the main anomaly categories to identify operational inconsistencies.
+- Validate suspicious periods before taking inventory or promotion decisions.
+
+HUMAN VALIDATION:
+- Human validation status: Validated.
+
+FINAL DECISION:
+- Review detected anomalies before making inventory or promotion decisions.
+
+
+5. Human Validation
+--------------------------------------------------
+Final status: Validated
+Total recommendations: 3
+Approved recommendations: 3
+Rejected recommendations: 0
+Human validation required: True
+
+6. Final Conclusion
+--------------------------------------------------
+The AI system analyzed retail data, generated business recommendations, and validated decisions through a human-in-the-loop checkpoint.

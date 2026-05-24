@@ -1,0 +1,10 @@
+pandas
+numpy
+scikit-learn
+torch
+matplotlib
+crewai
+crewai-tools
+litellm
+python-dotenv
+langchain-community

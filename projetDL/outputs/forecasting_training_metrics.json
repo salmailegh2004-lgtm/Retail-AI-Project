@@ -1,0 +1,8 @@
+{
+    "MAE": 74223.63918008193,
+    "RMSE": 121430.67067408793,
+    "R2": 0.5633603724046612,
+    "SMAPE": 8.63284520779777,
+    "Peak_Threshold": 964690.873686,
+    "Threshold_Method": "hybrid max(percentile_90, mean + std)"
+}
