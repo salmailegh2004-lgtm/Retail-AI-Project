@@ -31,18 +31,18 @@ st.markdown("""
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html, body, [data-testid=\"stAppViewContainer\"] {
+html, body, [data-testid="stAppViewContainer"] {
     background-color: #09090b;
     color: #e4e4e7;
     font-family: 'DM Sans', sans-serif;
 }
 
 /* Sidebar */
-[data-testid=\"stSidebar\"] {
+[data-testid="stSidebar"] {
     background-color: #0f0f12 !important;
     border-right: 1px solid #1f1f27;
 }
-[data-testid=\"stSidebar\"] * { font-family: 'DM Sans', sans-serif; }
+[data-testid="stSidebar"] * { font-family: 'DM Sans', sans-serif; }
 
 /* Remove default padding */
 .block-container { padding: 2rem 2.5rem 3rem; max-width: 1280px; }
@@ -123,17 +123,17 @@ html, body, [data-testid=\"stAppViewContainer\"] {
 }
 
 /* ── Metric cards ── */
-[data-testid=\"stMetric\"] {
+[data-testid="stMetric"] {
     background: #111117 !important;
     border: 1px solid #1f1f27 !important;
     border-radius: 14px !important;
     padding: 20px 22px !important;
     transition: border-color .2s;
 }
-[data-testid=\"stMetric\"]:hover { border-color: #2563eb !important; }
-[data-testid=\"stMetricLabel\"] { color: #71717a !important; font-size: 12px !important; font-weight: 500 !important; letter-spacing: .4px; }
-[data-testid=\"stMetricValue\"] { color: #f4f4f5 !important; font-size: 26px !important; font-weight: 700 !important; }
-[data-testid=\"stMetricDelta\"] { font-size: 12px !important; }
+[data-testid="stMetric"]:hover { border-color: #2563eb !important; }
+[data-testid="stMetricLabel"] { color: #71717a !important; font-size: 12px !important; font-weight: 500 !important; letter-spacing: .4px; }
+[data-testid="stMetricValue"] { color: #f4f4f5 !important; font-size: 26px !important; font-weight: 700 !important; }
+[data-testid="stMetricDelta"] { font-size: 12px !important; }
 
 /* ── Cards / panels ── */
 .card {
@@ -210,13 +210,13 @@ html, body, [data-testid=\"stAppViewContainer\"] {
 .stDownloadButton > button:hover { background: #0c1a3a !important; border-color: #2563eb !important; }
 
 /* ── Expanders ── */
-div[data-testid=\"stExpander\"] {
+div[data-testid="stExpander"] {
     background: #111117 !important;
     border: 1px solid #1f1f27 !important;
     border-radius: 12px !important;
     overflow: hidden;
 }
-div[data-testid=\"stExpander\"] summary {
+div[data-testid="stExpander"] summary {
     font-weight: 600 !important;
     color: #d4d4d8 !important;
     font-size: 13px !important;
@@ -249,14 +249,14 @@ div[data-testid=\"stExpander\"] summary {
 .sidebar-nav-icon { font-size: 15px; width: 20px; text-align: center; }
 
 /* ── File upload area ── */
-[data-testid=\"stFileUploader\"] {
+[data-testid="stFileUploader"] {
     border: 1.5px dashed #2a2a35 !important;
     border-radius: 12px !important;
     background: #0c0c10 !important;
 }
 
 /* ── DataFrames ── */
-[data-testid=\"stDataFrame\"] { border-radius: 10px; overflow: hidden; }
+[data-testid="stDataFrame"] { border-radius: 10px; overflow: hidden; }
 thead tr th { background: #1a1a22 !important; color: #71717a !important; font-size: 11px !important; font-weight: 600 !important; letter-spacing: .5px; text-transform: uppercase; }
 
 /* ── Text area ── */
@@ -270,16 +270,16 @@ textarea {
 }
 
 /* ── Radio buttons ── */
-[data-testid=\"stRadio\"] label { font-size: 13px !important; color: #a1a1aa !important; }
+[data-testid="stRadio"] label { font-size: 13px !important; color: #a1a1aa !important; }
 
 /* ── Spinner ── */
-[data-testid=\"stSpinner\"] { color: #2563eb !important; }
+[data-testid="stSpinner"] { color: #2563eb !important; }
 
 /* ── JSON viewer ── */
-[data-testid=\"stJson\"] { background: #0c0c10 !important; border-radius: 10px !important; border: 1px solid #1f1f27 !important; }
+[data-testid="stJson"] { background: #0c0c10 !important; border-radius: 10px !important; border: 1px solid #1f1f27 !important; }
 
 /* ── Line chart ── */
-[data-testid=\"stArrowVegaLiteChart\"] { border-radius: 12px; overflow: hidden; }
+[data-testid="stArrowVegaLiteChart"] { border-radius: 12px; overflow: hidden; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -316,18 +316,6 @@ def generate_pdf_report(text_path, pdf_path):
 
     doc.build(story)
     return pdf_path
-
-
-def load_saved_forecasting_metrics():
-    summary_path = os.path.join(OUTPUT_DIR, "forecasting_summary.json")
-    if not os.path.exists(summary_path):
-        return {}
-    try:
-        with open(summary_path, "r", encoding="utf-8") as f:
-            summary = json.load(f)
-        return summary.get("metrics", {})
-    except Exception:
-        return {}
 
 
 # ─── Session state init ─────────────────────────────────────────────────────────
@@ -560,7 +548,7 @@ def page_run():
             </div>
             """, unsafe_allow_html=True)
 
-    # --- Section Historique unique des logs ---
+    # Log history
     log_path = os.path.join(OUTPUT_DIR, "orchestrator_logs.json")
     if os.path.exists(log_path):
         st.markdown('<div style="height:12px"></div>', unsafe_allow_html=True)
@@ -603,26 +591,52 @@ def page_metrics():
         c3.metric("Detected Peaks",    summary.get("number_of_detected_future_peaks", 0))
 
         st.markdown('<div style="height:16px"></div>', unsafe_allow_html=True)
-        st.markdown('<div class="section-label">Inventory</div>', unsafe_allow_html=True)
+        st.markdown('<div class="section-label">Inventory Predictions</div>', unsafe_allow_html=True)
         c4, c5 = st.columns(2)
         c4.metric("Total Predicted Demand",   f"{inventory.get('total_predicted_demand', 0):,.0f} units")
         c5.metric("Recommended Inventory",    f"{inventory.get('total_recommended_inventory', 0):,.0f} units")
 
-        saved_metrics = load_saved_forecasting_metrics()
-        if saved_metrics:
-            st.markdown('<hr class="divider">', unsafe_allow_html=True)
-            st.markdown('<div class="section-label">Model Accuracy (Test Set)</div>', unsafe_allow_html=True)
-            m1, m2, m3, m4 = st.columns(4)
-            m1.metric("MAE",   f"{saved_metrics.get('MAE', 0):.2f}")
-            m2.metric("RMSE",  f"{saved_metrics.get('RMSE', 0):.2f}")
-            m3.metric("R²",    f"{saved_metrics.get('R2', 0):.2f}")
-            m4.metric("SMAPE", f"{saved_metrics.get('SMAPE', 0):.2f}%")
+        # ─────────────────────────────────────────────
+        # SALES VISUALIZATION
+        # ─────────────────────────────────────────────
+        forecast_path = os.path.join(OUTPUT_DIR, "forecasting_results.csv")
+        test_path = os.path.join(OUTPUT_DIR, "test_actual_vs_predicted.csv")
 
-        st.markdown("""
-        <div class="info-banner">
-            ℹ Inference uses the pre-trained LSTM model. Accuracy metrics reflect the saved training/test evaluation.
-        </div>
-        """, unsafe_allow_html=True)
+        # Future forecast sales
+        if os.path.exists(forecast_path):
+            forecast_df = pd.read_csv(forecast_path)
+            st.markdown('<hr class="divider">', unsafe_allow_html=True)
+            st.markdown('<div class="section-title">Future Sales Forecast</div>', unsafe_allow_html=True)
+
+            fc1, fc2, fc3 = st.columns(3)
+            fc1.metric("Average Predicted Sales", f"{forecast_df['predicted_sales'].mean():.2f}")
+            fc2.metric("Maximum Predicted Sales", f"{forecast_df['predicted_sales'].max():.2f}")
+            fc3.metric("Minimum Predicted Sales", f"{forecast_df['predicted_sales'].min():.2f}")
+
+            st.line_chart(forecast_df.set_index("date")["predicted_sales"])
+
+            with st.expander("View Forecast Data"):
+                st.dataframe(forecast_df, use_container_width=True)
+
+        # Actual vs Predicted sales
+        if os.path.exists(test_path):
+            compare_df = pd.read_csv(test_path)
+            st.markdown('<hr class="divider">', unsafe_allow_html=True)
+            st.markdown('<div class="section-title">Actual vs Predicted Sales Comparison</div>', unsafe_allow_html=True)
+
+            real_sales = compare_df["actual_sales"].sum()
+            predicted_sales = compare_df["predicted_sales"].sum()
+
+            ac1, ac2 = st.columns(2)
+            ac1.metric("Total Actual Sales", f"{real_sales:,.2f}")
+            ac2.metric("Total Predicted Sales", f"{predicted_sales:,.2f}")
+
+            chart_df = compare_df[["date", "actual_sales", "predicted_sales"]].copy()
+            chart_df = chart_df.set_index("date")
+            st.line_chart(chart_df)
+
+            with st.expander("View Comparison Data"):
+                st.dataframe(compare_df, use_container_width=True)
 
     # ── Anomaly metrics ──
     elif mode == "anomaly":
@@ -634,18 +648,6 @@ def page_metrics():
         c1.metric("Records Analyzed",    summary.get("total_records_analyzed", "N/A"))
         c2.metric("Anomalies Detected",  summary.get("total_anomalies_detected", "N/A"))
         c3.metric("Anomaly Rate",        f"{rate*100:.2f}%" if isinstance(rate,(int,float)) else "N/A")
-
-        training_metrics = summary.get("training_metrics", {})
-        if training_metrics:
-            st.markdown('<hr class="divider">', unsafe_allow_html=True)
-            st.markdown('<div class="section-label">Autoencoder Performance</div>', unsafe_allow_html=True)
-            a1, a2, a3 = st.columns(3)
-            final_loss   = training_metrics.get("final_reconstruction_loss")
-            best_val     = training_metrics.get("best_validation_loss")
-            threshold    = training_metrics.get("anomaly_threshold")
-            a1.metric("Final Reconstruction Loss", f"{final_loss:.4f}"  if isinstance(final_loss,(int,float)) else "N/A")
-            a2.metric("Best Validation Loss",       f"{best_val:.4f}"   if isinstance(best_val,(int,float))   else "N/A")
-            a3.metric("Anomaly Threshold",          f"{threshold:.4f}"  if isinstance(threshold,(int,float))  else "N/A")
 
         st.markdown('<hr class="divider">', unsafe_allow_html=True)
         col1, col2 = st.columns(2)
@@ -676,12 +678,10 @@ def page_report():
     json_path   = os.path.join(OUTPUT_DIR, "final_business_report.json")
     pdf_path    = os.path.join(OUTPUT_DIR, "final_business_report.pdf")
 
-    # ── Step 1: check pipeline ran ──
     if not pipeline_output:
         st.markdown('<div class="info-banner">ℹ Step 1 — Run the analysis pipeline first.</div>', unsafe_allow_html=True)
         return
 
-    # ── Step 2: check human validation submitted ──
     if not human_validation:
         st.markdown("""
         <div class="warn-banner">
@@ -691,7 +691,6 @@ def page_report():
         """, unsafe_allow_html=True)
         return
 
-    # ── Validation summary ──
     summary = human_validation.get("validation_summary", {})
     c1, c2, c3 = st.columns(3)
     c1.metric("Recommendations", summary.get("total_recommendations", "—"))
@@ -700,7 +699,6 @@ def page_report():
 
     st.markdown('<hr class="divider">', unsafe_allow_html=True)
 
-    # ── Step 3: generate report button ──
     if st.button("⚙  Generate Final Report", use_container_width=False):
         with st.spinner("Generating report…"):
             try:
@@ -720,7 +718,6 @@ def page_report():
                 st.error(f"Report generation failed: {e}")
                 return
 
-    # ── Report preview + downloads ──
     if not os.path.exists(report_path):
         st.markdown('<div class="info-banner">ℹ Click <strong>Generate Final Report</strong> above to produce the report.</div>', unsafe_allow_html=True)
         return
@@ -786,7 +783,6 @@ def page_hitl():
         st.markdown('<div class="info-banner">ℹ No recommendations found in the pipeline output.</div>', unsafe_allow_html=True)
         return
 
-    # Init decisions in session state
     if "hitl_decisions" not in st.session_state or len(st.session_state.hitl_decisions) != len(recommendations):
         st.session_state.hitl_decisions = ["Approved"] * len(recommendations)
 
